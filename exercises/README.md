@@ -6,9 +6,11 @@ The solution to all of these problems can be found in the solutions folder.
 
 # To start solving problems with pyspark, we first need to import it
 
+```
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 sc = spark.sparkContext
+```
 
 
 # 1.1 First Exercise
@@ -28,12 +30,14 @@ Spark functions you will need to use,
 
 In pseudo code:
 
+```
 data = list_of_100_numbers()
 
 rdd = sc.parallelize(data) # Convert list to rdd
 rdd = rdd.map(lambda_function_that_tripples_number)
 result = rdd.sum() # Sum all our values
 assert(result == 15150)
+```
 
 
 # 1.2 Read a csv and split the columns
@@ -57,6 +61,7 @@ Spark functions you will need to use,
 
 In pseudo code:
 
+```
 rdd = sc.textFile(path)
 
 rdd = rdd.flatMap(function_that_splits_csv)
@@ -64,6 +69,7 @@ rddd.collect()
 
 Output should look something like:
 ['1', '200', '2', '500', '3', '-99', '4', '99', '5', '600']
+```
 
 
 
@@ -89,11 +95,13 @@ Spark functions you will need to use,
 
 In pseudo code:
 
+```
 rdd = rdd.map(parseRow).filter(filterLessThanZero).map(getId)
 less_than_zero = rdd.collect()
 
 Output should look something like:
 [3]
+```
 
 
 # 1.4 Take a list of values, and translate it through a lookup table.
@@ -116,6 +124,7 @@ Spark functions you will need to use,
 
 The setup should look like:
 
+```
 countries  = {"sv": "sweden", "us": "usa"}
 data = ["sv","us"]
 broadcast_countries = spark.sparkContext.broadcast(countries)
@@ -124,6 +133,7 @@ parallelize, map and collect
 
 Output should look something like:
 ['sweden', 'usa']
+```
 
 
 # 1.5 Create an accumulator and implement a custom sum operation.
@@ -143,6 +153,8 @@ Spark functions you will need to use,
 
 The setup should look like:
 
+```
+
 accum=sc.accumulator(0)
 read_file()
 custom_summary()
@@ -151,4 +163,5 @@ assert(accum.value == 1300)
 Output should be
 1300
 
+```
 
