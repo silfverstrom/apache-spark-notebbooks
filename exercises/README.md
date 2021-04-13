@@ -165,3 +165,113 @@ Output should be
 
 ```
 
+# 2.1 - Fetch JSON-file from s3 as DataFrame and show its structure
+
+
+Fetch a json-file from s3 and inspect the data.
+
+
+Spark functions you will need to use
+
+*  spark.read.option("multiline",True).json(path)
+
+In pseudo code:
+```
+
+dataframe = read_json_from_s3_to_df(path)
+dataframe.show
+```
+
+# 2.2 -  Group all eco codes from the dataframe, sort them and show the highest
+
+ Group all eco codes from the dataframe, sort them and show the highest
+
+
+Spark functions you will need to use
+
+* df.groupBy - transformation that groups data
+* count() - counts number of elements
+* df.orderBy - orders results
+* df.show - shows results
+
+Setup
+```
+
+dataframe = read_json_from_s3_to_df(path)
+group_data_frame()
+count_group()
+orderBy()
+```
+
+# 2.3 -  Count how many different variations there are of Alekhines opening
+
+We can find out how many openings there are that starts wit Alekhine by using a
+LIKE query in sql.
+
+Spark functions you will need to use
+
+* df.select() - select columns
+* df.where() - add sql where query
+* df.count() - count occurences
+
+In pseudo code:
+
+```
+df = df.select(columns)
+df = df.where(query)
+ct = df.count()
+```
+
+# 2.4 -  Find all openings starting with e4 e5. Define a opening as having the first 10 letters unique.
+
+There are many variations of chess openings. We want to find how many
+variations there are for the major groups of openings.
+We find the groups by selecting the first 10 letters of an opening, and
+grouping the results on this value.
+
+We want a result that looks something like this:
+```
++----------+-----+
+|Ruy Lopez:|  227|
+|King's Gam|  189|
+|Italian Ga|  156|
+....
+```
+
+Spark functions you will need to use:
+
+* df.select
+* pyspark.sql.functions.substring().alias(alias_name) - for creating a substring
+* df.where - For specifing query
+* df.groupBy - for grouping results
+* df.count() - for counting elements
+* df.orderBy - for ordering resultskk
+
+# 3.0 - More analysis of chess-data.
+
+Lets try finding the solution to a couple of questions from a dataset
+
+For all these exercises, load a dataframe using:
+```
+df = spark.read.csv("s3://link-workshops/chessdb.csv", header=True)
+
+# will return a structure looking like
+|             Opening|Colour|Num Games|ECO|Last Played|Perf Rating|Avg Player|Player Win %|Draw %|Opponent Win %|               Moves|
+
+```
+
+# 3.1 - What opening has the largest win %?
+
+# 3.2 - What are the top 10 openings that was played in 2018?
+
+# 3.3 - What is the most common first move for black?
+
+# 3.4 - What is the most common move for white for players with an average rating over 2200?
+
+# 3.5 - How many games has been played in total?
+
+# 3.6 - What opening gives the best ratio between Avg Player and Perf Rating.
+
+If performance rating is higher than avg player, Perf Rating - Avg Player is
+the ratio above where the player is expected to play. What openings gives us
+the best ratio?
