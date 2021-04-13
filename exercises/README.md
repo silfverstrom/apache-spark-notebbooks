@@ -252,6 +252,11 @@ Spark functions you will need to use:
 Lets try finding the solution to a couple of questions from a dataset
 
 For all these exercises, load a dataframe using:
+
+Also, take a look at the reference of built in aggregation functions
+
+* https://spark.apache.org/docs/latest/sql-ref-functions-builtin.html#aggregate-functions
+
 ```
 df = spark.read.csv("s3://link-workshops/chessdb.csv", header=True)
 
