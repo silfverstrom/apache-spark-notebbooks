@@ -7,6 +7,7 @@ The solution to all of these problems can be found in the solutions folder.
 # To start solving problems with pyspark, we first need to import it
 
 ```
+%pyspark
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 sc = spark.sparkContext
