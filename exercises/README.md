@@ -166,8 +166,9 @@ Output should be
 
 ```
 
-#2. 0
-We can start using the dataset from
+# 2.0 - 
+
+For all 2.0 exercises we can use the data at:
 
 ``
 s3://link-workshops/eco.json
