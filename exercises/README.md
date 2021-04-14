@@ -254,7 +254,7 @@ Spark functions you will need to use:
 * df.where - For specifing query
 * df.groupBy - for grouping results
 * df.count() - for counting elements
-* df.orderBy - for ordering resultskk
+* df.orderBy - for ordering result
 
 # 3.0 - More analysis of chess-data.
 
