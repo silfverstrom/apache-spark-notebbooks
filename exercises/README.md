@@ -166,6 +166,13 @@ Output should be
 
 ```
 
+#2. 0
+We can start using the dataset from
+
+``
+s3://link-workshops/eco.json
+``
+
 # 2.1 - Fetch JSON-file from s3 as DataFrame and show its structure
 
 
