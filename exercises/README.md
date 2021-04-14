@@ -200,7 +200,7 @@ Spark functions you will need to use
 
 * df.groupBy - transformation that groups data
 * count() - counts number of elements
-* df.orderBy - orders results
+* df.orderBy(column,ascending=False) - orders results
 * df.show - shows results
 
 Setup
